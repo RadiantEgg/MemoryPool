@@ -1,0 +1,10 @@
+build/
+
+/test
+
+*.o
+
+*.exe
+
+.vscode/
+
