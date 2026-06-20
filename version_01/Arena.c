@@ -42,6 +42,11 @@ void *mp_alloc(MemPool *mp, size_t size)
     return p;
 }
 
+void mp_reset(MemPool *mp)
+{
+    mp->offset = 0;
+}
+
 
 int main()
 {
@@ -58,5 +63,14 @@ int main()
     strcpy(buf, "memory pool");
 
     printf("%d\n%s\n", *a, buf);
+
+    mp_reset(&mp);
+    printf("%zu\n", mp.offset);
+
+    char *b = mp_alloc(&mp, sizeof(char));
+    *b = 'm';
+
+    printf("%c\n%zu\n", *b, mp.offset);
+
     return 0;
 }
